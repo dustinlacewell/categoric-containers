@@ -94,9 +94,6 @@ installItems(itemContainer)
 const items = itemContainer.getAll<IItem>()
 ```
 
-Now at runtime you could use `locateEnemies()` to get a collection containing `SnakeEnemy` and `SpiderEnemy` classes.
-
-
 # Installation
 
 ```
