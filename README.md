@@ -112,9 +112,9 @@ This creates a number of functions and decorators:
 
 - `install(container: Container)` - binds all classes in the category to the container
 - `makeChild(container: Container)` - creates a child container and binds all classes in the category to it
-- `singleton(target: Constructable)` - decorator for singleton classes
-- `transient(target: Constructable)` - decorator for transient classes
-- `request(target: Constructable)` - decorator for request classes
+- `singleton(target?: interfaces.ServiceIdentifier)` - decorator for singleton classes
+- `transient(target?: interfaces.ServiceIdentifier)` - decorator for transient classes
+- `request(target?: interfaces.ServiceIdentifier)` - decorator for request classes
 
 Read more about inversify scopes [here](https://github.com/inversify/InversifyJS/blob/master/wiki/scope.md).
 
