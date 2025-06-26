@@ -1,9 +1,9 @@
 import { createClassCategoric } from "@ldlework/categoric-decorators"
-import { Container, injectable, interfaces } from "inversify"
+import { Container, injectable, ServiceIdentifier } from "inversify"
 
 
 type metadata = {
-    serviceIdentifier?: interfaces.ServiceIdentifier
+    serviceIdentifier?: ServiceIdentifier
 }
 
 export const createCategoricContainer = () => {
@@ -12,7 +12,7 @@ export const createCategoricContainer = () => {
     const [_transient, _locateTransients] = createClassCategoric<metadata>()
     const [_request, _locateRequests] = createClassCategoric<metadata>()
 
-    const singleton = (serviceIdentifier?: interfaces.ServiceIdentifier) => {
+    const singleton = (serviceIdentifier?: ServiceIdentifier) => {
         return (target: any) => {
             _singleton({ serviceIdentifier })(target)
             injectable()(target)
@@ -24,13 +24,13 @@ export const createCategoricContainer = () => {
         for (const [ target, { data } ] of singletons) {
             const { serviceIdentifier } = data
             container
-                .bind(serviceIdentifier || target as interfaces.ServiceIdentifier)
+                .bind(serviceIdentifier || target as ServiceIdentifier)
                 .to(target as any)
                 .inSingletonScope()
         }
     }
 
-    const transient = (serviceIdentifier: interfaces.ServiceIdentifier) => {
+    const transient = (serviceIdentifier: ServiceIdentifier) => {
         return (target: any) => {
             _transient({ serviceIdentifier })(target)
             injectable()(target)
@@ -42,13 +42,13 @@ export const createCategoricContainer = () => {
         for (const [ target, { data } ] of transients) {
             const { serviceIdentifier } = data
             container
-                .bind(serviceIdentifier || target as interfaces.ServiceIdentifier)
+                .bind(serviceIdentifier || target as ServiceIdentifier)
                 .to(target as any)
                 .inTransientScope()
         }
     }
 
-    const request = (serviceIdentifier: interfaces.ServiceIdentifier) => {
+    const request = (serviceIdentifier: ServiceIdentifier) => {
         return (target: any) => {
             _request({ serviceIdentifier })(target)
             injectable()(target)
@@ -60,7 +60,7 @@ export const createCategoricContainer = () => {
         for (const [ target, { data } ] of requests) {
             const { serviceIdentifier } = data
             container
-                .bind(serviceIdentifier || target as interfaces.ServiceIdentifier)
+                .bind(serviceIdentifier || target as ServiceIdentifier)
                 .to(target as any)
                 .inRequestScope()
         }
@@ -73,7 +73,7 @@ export const createCategoricContainer = () => {
     }
 
     const makeChild = (container: Container) => {
-        const child = container.createChild()
+        const child = new Container({ parent: container })
         install(child)
         return child
     }

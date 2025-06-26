@@ -2,10 +2,10 @@
   "name": "@ldlework/categoric-containers",
   "version": "0.0.1",
   "description": "",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -fr dist; tsc -b"
+    "build": "rimraf dist && tsc -b"
   },
   "keywords": [],
   "author": "Dustin Lacewell",
@@ -15,12 +15,15 @@
     "uuid": "^8.3.2"
   },
   "peerDependencies": {
-    "inversify": "^6.0.1"
+    "inversify": "^6.0.1",
+    "reflect-metadata": "^0.2.2"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
     "@types/uuid": "^8.3.4",
-    "inversify": "^6.0.1",
+    "inversify": "^7.5.4",
+    "reflect-metadata": "^0.2.2",
+    "rimraf": "^6.0.1",
     "ts-node": "^10.8.1",
     "typescript": "^4.7.4"
   }
