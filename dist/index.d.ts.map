@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../src/createCategoricContainer.ts","../src/index.ts"],"names":[],"mappings":";IACA,OAAO,EAAE,SAAS,EAAc,iBAAiB,EAAE,MAAM,WAAW,CAAA;IAOpE,MAAM,CAAC,MAAM,wBAAwB;sCA4DL,SAAS;wCAMP,SAAS;iDA5DA,iBAAiB,cACpC,GAAG;gDAiBe,iBAAiB,cACnC,GAAG;8CAiBa,iBAAiB,cACjC,GAAG;KA8B1B,CAAA;;;ICjFD,yCAA2C"}

@@ -60,3 +60,4 @@ const createCategoricContainer = () => {
 };
 
 exports.createCategoricContainer = createCategoricContainer;
+//# sourceMappingURL=index.js.map

@@ -1,11 +1,14 @@
 {
   "name": "@ldlework/categoric-containers",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist && tsc -b"
+    "clean": "rimraf dist",
+    "build": "pkgroll --sourcemap && tsc -b",
+    "rebuild": "pnpm clean; pnpm build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Dustin Lacewell",
@@ -22,6 +25,7 @@
     "@types/node": "^18.0.0",
     "@types/uuid": "^8.3.4",
     "inversify": "^7.5.4",
+    "pkgroll": "^2.13.1",
     "reflect-metadata": "^0.2.2",
     "rimraf": "^6.0.1",
     "ts-node": "^10.8.1",
