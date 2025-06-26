@@ -1,6 +1,6 @@
 {
   "name": "@ldlework/categoric-containers",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "uuid": "^8.3.2"
   },
   "peerDependencies": {
-    "inversify": "^6.0.1",
+    "inversify": "^7.5.4",
     "reflect-metadata": "^0.2.2"
   },
   "devDependencies": {
