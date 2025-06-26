@@ -1,63 +1,17 @@
-'use strict';
-
-var categoricDecorators = require('@ldlework/categoric-decorators');
-var inversify = require('inversify');
-
-const createCategoricContainer = () => {
-  const [_singleton, _locateSingletons] = categoricDecorators.createClassCategoric();
-  const [_transient, _locateTransients] = categoricDecorators.createClassCategoric();
-  const [_request, _locateRequests] = categoricDecorators.createClassCategoric();
-  const singleton = (serviceIdentifier) => {
-    return (target) => {
-      _singleton({ serviceIdentifier })(target);
-      inversify.injectable()(target);
-    };
-  };
-  const installSingletons = (container) => {
-    const singletons = _locateSingletons();
-    for (const [target, { data }] of singletons) {
-      const { serviceIdentifier } = data;
-      container.bind(serviceIdentifier || target).to(target).inSingletonScope();
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
     }
-  };
-  const transient = (serviceIdentifier) => {
-    return (target) => {
-      _transient({ serviceIdentifier })(target);
-      inversify.injectable()(target);
-    };
-  };
-  const installTransients = (container) => {
-    const transients = _locateTransients();
-    for (const [target, { data }] of transients) {
-      const { serviceIdentifier } = data;
-      container.bind(serviceIdentifier || target).to(target).inTransientScope();
-    }
-  };
-  const request = (serviceIdentifier) => {
-    return (target) => {
-      _request({ serviceIdentifier })(target);
-      inversify.injectable()(target);
-    };
-  };
-  const installRequests = (container) => {
-    const requests = _locateRequests();
-    for (const [target, { data }] of requests) {
-      const { serviceIdentifier } = data;
-      container.bind(serviceIdentifier || target).to(target).inRequestScope();
-    }
-  };
-  const install = (container) => {
-    installSingletons(container);
-    installTransients(container);
-    installRequests(container);
-  };
-  const makeChild = (container) => {
-    const child = new inversify.Container({ parent: container });
-    install(child);
-    return child;
-  };
-  return { install, makeChild, singleton, transient, request };
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
-
-exports.createCategoricContainer = createCategoricContainer;
-//# sourceMappingURL=index.js.map
+Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(require("./createCategoricContainer"), exports);

@@ -11,6 +11,9 @@ importers:
       '@ldlework/categoric-decorators':
         specifier: ^1.0.0
         version: 1.0.1
+      inversify:
+        specifier: ^7.5.4
+        version: 7.5.4(reflect-metadata@0.2.2)
       uuid:
         specifier: ^8.3.2
         version: 8.3.2
@@ -21,9 +24,6 @@ importers:
       '@types/uuid':
         specifier: ^8.3.4
         version: 8.3.4
-      inversify:
-        specifier: ^7.5.4
-        version: 7.5.4(reflect-metadata@0.2.2)
       pkgroll:
         specifier: ^2.13.1
         version: 2.13.1(typescript@4.9.5)
