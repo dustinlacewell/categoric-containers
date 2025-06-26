@@ -1,16 +1,17 @@
 import { createClassCategoric } from "@ldlework/categoric-decorators"
 import { Container, injectable, ServiceIdentifier } from "inversify"
 
+export { Container, ServiceIdentifier } from "inversify"
 
-type metadata = {
+export type metadata = {
     serviceIdentifier?: ServiceIdentifier
 }
 
-export const createCategoricContainer = () => {
+export const createCategoricContainer = <T extends metadata = metadata>() => {
 
-    const [_singleton, _locateSingletons] = createClassCategoric<metadata>()
-    const [_transient, _locateTransients] = createClassCategoric<metadata>()
-    const [_request, _locateRequests] = createClassCategoric<metadata>()
+    const [_singleton, _locateSingletons] = createClassCategoric<T>()
+    const [_transient, _locateTransients] = createClassCategoric<T>()
+    const [_request, _locateRequests] = createClassCategoric<T>()
 
     const singleton = (serviceIdentifier?: ServiceIdentifier) => {
         return (target: any) => {

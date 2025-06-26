@@ -1,42 +1,37 @@
 {
   "name": "@ldlework/categoric-containers",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "",
   "type": "commonjs",
   "main": "dist/index.cjs",
   "types": "dist/index.d.ts",
   "exports": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.mjs",
+    "types": "./dist/index.d.ts"
   },
   "files": [
-      "dist"
+    "dist"
   ],
   "scripts": {
-      "map": "tsc --emitDeclarationOnly --declaration --declarationMap",
-      "build": "pkgroll --sourcemap && pnpm run map",
-      "clean": "rimraf dist",
-      "rebuild": "rm -rf dist && npm run build"
+    "build": "tsc -b",
+    "clean": "rimraf dist",
+    "rebuild": "rm -rf dist && npm run build"
   },
   "keywords": [],
   "author": "Dustin Lacewell",
   "license": "ISC",
   "dependencies": {
+    "inversify": "^7.5.4",
+    "reflect-metadata": "^0.2.2",
+    "@types/uuid": "^8.3.4",
     "@ldlework/categoric-decorators": "^1.0.0",
     "uuid": "^8.3.2"
   },
-  "peerDependencies": {
-    "inversify": "^7.5.4",
-    "reflect-metadata": "^0.2.2"
-  },
   "devDependencies": {
     "@types/node": "^18.0.0",
-    "@types/uuid": "^8.3.4",
     "pkgroll": "^2.13.1",
-    "reflect-metadata": "^0.2.2",
     "rimraf": "^6.0.1",
-    "ts-node": "^10.8.1",
-    "typescript": "^4.7.4"
+    "typescript": "^5.8.3"
   }
 }
